@@ -33,7 +33,7 @@ public class BookOrderTest {
   JavascriptExecutor js;
   @Before
   public void setUp() {
-	System.setProperty("webdriver.chrome.driver","C://Users//Janez//Drivers//chromedriver.exe");
+	System.setProperty("webdriver.chrome.driver","C://Users//Fatima//Drivers//chromedriver.exe");
     driver = new ChromeDriver();
     js = (JavascriptExecutor) driver;
     vars = new HashMap<String, Object>();
