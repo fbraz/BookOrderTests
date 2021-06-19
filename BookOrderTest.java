@@ -30,10 +30,14 @@ public class BookOrderTest {
   private Map<String, Object> vars;
   private List<WebElement> stories;
   private WebElement story;
+  private WebElement arrowRight;
+  private WebElement arrowLeft;
+  private List<WebElement> selectedStories;
+  private WebElement element;
   JavascriptExecutor js;
   @Before
   public void setUp() {
-	System.setProperty("webdriver.chrome.driver","C://Users//Fatima//Drivers//chromedriver.exe");
+	System.setProperty("webdriver.chrome.driver","C://Users//Janez//Drivers//chromedriver.exe");
     driver = new ChromeDriver();
     js = (JavascriptExecutor) driver;
     vars = new HashMap<String, Object>();
@@ -54,10 +58,21 @@ public class BookOrderTest {
     	driver.findElement(By.cssSelector(".gtm-cookies-accept-all")).click();	
     }
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".boy:nth-child(1)")));
+    try {
+		Thread.sleep(3000);
+	} catch (InterruptedException e3) {
+		// TODO Auto-generated catch block
+		e3.printStackTrace();
+	}
     driver.findElement(By.cssSelector(".boy:nth-child(1)")).click();
     driver.findElement(By.id("character-name")).sendKeys("Martin");
     driver.findElement(By.cssSelector(".animate")).click();
-    
+    try {
+		Thread.sleep(3000);
+	} catch (InterruptedException e3) {
+		// TODO Auto-generated catch block
+		e3.printStackTrace();
+	}
     {
       WebElement element = driver.findElement(By.id("button-magic"));
       Actions builder = new Actions(driver);
@@ -68,11 +83,24 @@ public class BookOrderTest {
       Actions builder = new Actions(driver);
       builder.moveToElement(element, 0, 0).perform();
     }
+    
     driver.findElement(By.cssSelector(".skin02 > .skin02")).click();
     driver.findElement(By.cssSelector(".eyes > span > span")).click();
     driver.findElement(By.cssSelector(".blue")).click();
-    //wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button-magic")));
-    //driver.findElement(By.id("button-magic")).click();
+   // wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button-magic")));
+    try {
+		Thread.sleep(3000);
+	} catch (InterruptedException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	}
+    driver.findElement(By.id("button-magic")).click();
+    try {
+		Thread.sleep(5000);
+	} catch (InterruptedException e2) {
+		// TODO Auto-generated catch block
+		e2.printStackTrace();
+	}
     driver.findElement(By.cssSelector("div:nth-child(1) > .book-details > .button")).click();
     driver.findElement(By.cssSelector(".gtm-product-arrow-down-first")).click();
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".gtm-character-1")));
@@ -81,38 +109,134 @@ public class BookOrderTest {
     }catch(Exception e) {
     	System.out.println(e);
     }
-    js.executeScript("window.scrollTo(0,2616)");
+    js.executeScript("window.scrollTo(0,2616)"); 
+    
+    
+   /* try {
+		Thread.sleep(6000);
+	} catch (InterruptedException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	}
+    
+    wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".personalization-slider:nth-child(1) .skin02 > .skin02")));
+    
     try {
     driver.findElement(By.cssSelector(".personalization-slider:nth-child(1) .skin02 > .skin02")).click();
     }catch(Exception e) {
     	System.out.println(e);
-    }
-    wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".eyes:nth-child(3) > span > span")));
+    }*/
+    
+   
     try {
-    driver.findElement(By.cssSelector(".eyes:nth-child(3) > span > span")).click();
+		Thread.sleep(5000);
+	} catch (InterruptedException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	}
+    
+    try {
+    driver.findElement(By.cssSelector(".eyes:nth-child(3)> span > span ")).click();
     }catch(Exception e) {
     	System.out.println(e);
     }
-    driver.findElement(By.cssSelector(".eyes:nth-child(3) .blue")).click();
+    
+   // driver.findElement(By.cssSelector(".eyes:nth-child(3) .blue")).click();
     driver.findElement(By.cssSelector(".gtm-character-2")).click();
     js.executeScript("window.scrollTo(0,2980)");
+    arrowRight=driver.findElement(By.cssSelector(".icon-arrow-right-squared:nth-child(3)"));
+   
+    stories=driver.findElements(By.id("book-stories"));
+    System.out.println(stories.size());   	
     
-   if( driver.findElements(By.id("book-stories")).size()!=0) {
-	   int i=0;
+    if(stories.size()!=0) { 
+    	story=stories.get(0);
+    	//b1
+    	story.click();
+    	arrowRight.click();
+    	arrowRight.click();
+    	new Actions(driver).moveToElement(story).perform();
+    	//b2
+    	story.click();
+    	arrowRight.click();
+    	arrowRight.click();
+    	new Actions(driver).moveToElement(story).perform();
+    	//b3
+    	story.click();
+    	arrowRight.click();
+    	new Actions(driver).moveToElement(story).perform();
+    	try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	//b4
+    	story.click();
+    	arrowRight.click();
+	    new Actions(driver).moveToElement(story).perform();
+	    //b5
+	    story.click();
+	    arrowRight.click();
+    	arrowRight.click();
+    	new Actions(driver).moveToElement(story).perform();
+	    //b6
+	    story.click();
+	    arrowRight.click();
+	    new Actions(driver).moveToElement(story).perform();
+	    //b6
+	    story.click();
+	    arrowRight.click();
+	    new Actions(driver).moveToElement(story).perform();
+	    //b7
+	    story.click();
+	    arrowRight.click();
+	    arrowRight.click();
+	    new Actions(driver).moveToElement(story).perform();
+	    try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    //b8
+	    story.click();
+	    arrowRight.click();
+	    new Actions(driver).moveToElement(story).perform();
+	    //b9
+	    story.click();
+	    arrowRight.click();
+	    new Actions(driver).moveToElement(story).perform();
+	    //b10
+	    story.click();
+	    
+	    
+    }
+	    //new Actions(driver).moveToElement(story).perform();
 	   
+	  /* selectedStories.add(story);
+	   stories=driver.findElements(By.cssSelector(".icon-arrow-right-squared:nth-child(3)"));
+	   System.out.println( stories.size());*/
 	  
-	   while(i<=10) {
-		   
+	  /*
+	   while(selectedStories.size()!=5) {
 		   	stories=driver.findElements(By.id("book-stories"));
 		    System.out.println( stories.size());
-		    stories.get(0).click();
+		    //stories.get(0).click();
 		    stories=driver.findElements(By.cssSelector(".icon-arrow-right-squared:nth-child(3)"));
 		    System.out.println( stories.size());
 		    stories.get(0).click();
-		    i++;
-		   
+		    selectedStories.add(stories.get(0));
 	   }
 	   
+	   Collections.shuffle(selectedStories);
+	   selectedStories.forEach(WebElement -> {
+	   String css=WebElement.getCssValue("class");
+	   story=driver.findElement(By.cssSelector(css));
+	   story.click();
+	  });
+	   
+	  /* 
 	   stories=driver.findElements(By.id("book-stories"));
 	    
 	    System.out.println( stories.size());
@@ -123,11 +247,7 @@ public class BookOrderTest {
 	    //book1
 	    stories=driver.findElements(By.id("book-stories"));
 	    System.out.println( stories.size());
-	    stories.get(0).click();
-	    
-	    
-	   
-	   	
+	    stories.get(0).click();   	
 	   	driver.findElement(By.cssSelector(".visible.after-row.story-thumbnail-images")).click();
 	    driver.findElement(By.cssSelector(".li.visible:nth-child(4) .story-number")).click();
 	    driver.findElement(By.cssSelector(".visible:nth-child(6) .story-number")).click();
@@ -142,10 +262,22 @@ public class BookOrderTest {
 	    driver.findElement(By.cssSelector(".icon-arrow-right-squared:nth-child(3)")).click();
 	    driver.findElement(By.cssSelector(".visible:nth-child(11) .story-number")).click();
 	    driver.findElement(By.cssSelector(".visible:nth-child(7) .story-number")).click();  
-   }
-    
-
+	    }
+	    
+	    */
    
+	try {
+		Thread.sleep(5000);
+	} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	element=driver.findElement(By.className("button pink gtm-product-stories-save"));
+	new Actions(driver).moveToElement(element).perform();
+	js.executeScript("arguments[0].click()", element);
+	
+ 
     driver.findElement(By.cssSelector(".gtm-product-stories-save")).click();
     driver.findElement(By.cssSelector(".soft-cover")).click();
     driver.findElement(By.cssSelector(".gtm-product-cover-save")).click();
@@ -153,16 +285,19 @@ public class BookOrderTest {
     driver.findElement(By.name("dedication")).sendKeys("Quality Assurance");
     driver.findElement(By.cssSelector(".gtm-product-dedication-save")).click();
     driver.findElement(By.cssSelector(".gtm-giftbox-33-id:nth-child(2)")).click();
+    
     {
       WebElement element = driver.findElement(By.cssSelector(".gtm-giftbox-33-id:nth-child(3)"));
       Actions builder = new Actions(driver);
       builder.moveToElement(element).perform();
     }
+    
     {
       WebElement element = driver.findElement(By.tagName("body"));
       Actions builder = new Actions(driver);
       builder.moveToElement(element, 0, 0).perform();
     }
+    
     driver.findElement(By.cssSelector(".gtm-product-submit")).click();
     driver.findElement(By.cssSelector(".character-name")).click();
     driver.findElement(By.cssSelector(".character-name > div:nth-child(2) > input")).sendKeys("Theo");
@@ -195,5 +330,5 @@ public class BookOrderTest {
     driver.switchTo().frame(1);
     driver.findElement(By.id("cvv")).click();
     driver.findElement(By.id("cvv")).sendKeys("333");
+ }
   }
-}
